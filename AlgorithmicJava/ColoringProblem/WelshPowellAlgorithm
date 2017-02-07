@@ -1,0 +1,16 @@
+
+	WELSH-POWELL algorithm
+		Hatekonyan talalja meg az optimalis szinzest mindig:
+			Ha van egy haromszog a grafunkban -> mindig legalabb 3 szin kell a kiszinezeshez ilyenkor
+			
+				- nem mindig a legjobb megoldast fogja adni: de jobb, mint a greedy algoritmus
+				- nem a leghatekonyabb eljarast keresi meg .. megis van valami heurisztika
+				
+					1. rendezzuk a vertexeket fokszameloszlas/valencia alapjan csokkeno sorrendben
+					2. color the first vertex ... the vertex with the biggest valence
+							Jo, mert megszabadulunk azoktol az elejen amikkel a legtobb problema lehetne
+					3. menjunk vegig a listan es ugyanezzel jeloljuk meg azokat a vertexeket amik
+							nem kapcsolodnak a mar beszinezettelkhez ( ez ugye dinamikusan valtozik !!! )
+					4. hagyjuk ki a listabol amik mar be vannak szinezve
+					5. iteraljunk amig van be nem szinezett vertex
+					

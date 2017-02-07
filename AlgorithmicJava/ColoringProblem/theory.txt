@@ -1,0 +1,74 @@
+
+	BACKTRACKING: modositott depth first search tulajdonkeppen
+
+		pl.: ki akarunk jutni egy labirintusbol
+			~ nagyon sokszor mehetunk be zsakutcakba: jo lenne ezeket elkerulni 
+			~ sok helyen lehet alkalmazni: n-Queens problem + coloring problem !!!
+
+
+		DFS: nem mas mint egy preorder tree traversal
+			Pre-order: amikor a root az elso 
+			In-order: a root a kozepso elem, amit meglatogatunk
+			Post-order: a rootot latogatjuk meg utoljara
+
+
+	Backtracking is the procedure whereby, after determining that a node can lead to nothing but dead ends,
+ 	 we go back ("backtrack") to the node's parent and proceed with the search on the next child. We call a 
+	  node nonpromising if when visiting the node we determine that it cannot possibly lead to a solution. 
+	   Otherwise, we call it promising
+
+
+		 void expand (node v) {
+   		
+			node u;
+
+  			for (each child u of v)
+       				 if (promising(u))
+          				 if (there is a solution at u)
+              					write the solution;
+          			 	 else
+                 				expand (u);
+    		 }
+
+			Olyan, mint egy DFS, csak figyelunk, hogy felesleges
+				bejarasokat ne hajtsunk vegre
+				  ~ pont ez a backtrack lenyege mindig
+
+		Kiindulaskent van egy tree strukturank !!!
+	 the state space tree contains an exponentially large or larger number of nodes. Backtracking is used
+	 to avoid unnecessary checking of nodes. Given two instances with the same value of n, a backtracking 
+     algorithm may check very few nodes for one of them but the entire state space tree for the other.
+			+ MONTE CARLO MODSZERREL MEG HATEKONYABBA LEHET TENNI AZ ELJARAST
+
+	------------------------------------------------------------------------------------------------------------
+
+
+  The N-queens problem: hogyan tegyunk legy egy NxN es sakktablara N db kiralynot, hogy egyik se
+		fenyegesse a masikat? ... tehat ne legyenek egymas soraban/oszlopaban/atlojaban
+		
+		"promising function" lecsekkolja, hogy erdemes e az adott iranyban elmozdulni
+
+			col(i)-col(k)=i-k vagy col(i)-col(k)=k-i hogy general result that if the queen in the kth row threatens the queen in the ith row along one of its diagonals
+				Vagy jobbrol vagy balrol atlosan fenyegetve van 
+
+	------------------------------------------------------------------------------------------------------------
+
+ Graph coloring problem: The m-Coloring problem concerns finding all ways to color an undirected graph using
+	 at most m different colors, so that no two adjacent vertices are the same color.
+
+		2-coloring problem: ha ket szinnel meg lehet oldani a problemat
+		3-coloring problem: ha 3 szinnel megoldhato a problema
+
+			pl.: color a map so that no two adjacent regions are the same color
+
+
+	Lehet faszerkezetet konstrualni: van egy startvertex...mindegyiket kiprobaljuk...a strat nodetol egy leafig tarto ut
+		egy megoldast ad mindig
+		
+		
+		Akamai runs a network of thousands of servers and the servers are used to distribute content on Internet.
+		 They install a new software or update existing softwares pretty much every week. The update cannot be deployed on 
+		 every server at the same time, because the server may have to be taken down for the install. Also, the update should
+		  not be done one at a time, because it will take a lot of time. There are sets of servers that cannot be taken down together,
+		   because they have certain critical functions. This is a typical scheduling application of graph coloring problem. It turned out
+		    that 8 colors were good enough to color the graph of 75000 nodes. So they could install updates in 8 passes.
